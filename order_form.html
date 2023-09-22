@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgiana's Sweet World | ORDER FORM</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Georgiana's Sweet World</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#offerings">Menu</a></li>
+                <li><a href="index.html#buy-now">Buy Now</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="order-form">
+            <div class="product-details">
+                <h2>Selected Product</h2>
+                <img id="productImage" src="" alt="Product Image">
+                <h3 id="productName">Product Name</h3>
+                <p id="productPrice">$0</p>
+            </div>
+            <div class="order-details">
+                <h2>Order Form</h2>
+                <form id="orderForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" required></textarea>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <button type="button" id="placeOrder" class="buy-button">Place Order</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Georgiana's Sweet World. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Product details for different cakes
+        const productDetails = {
+            cake1: {
+                name: "Special Cake",
+                price: "€25",
+                image: "img/cake1.jpg"
+            },
+            cake2: {
+                name: "Classic Chocolate Cake",
+                price: "€20",
+                image: "img/cake2.jpg"
+            },
+            cake3: {
+                name: "Fruit Delight",
+                price: "€20",
+                image: "img/cake3.jpg"
+            },
+            // Add details for other products
+        };
+
+        // Retrieve the selected product ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedProductId = urlParams.get("id");
+
+        // Display selected product details or redirect to index if invalid
+        if (selectedProductId && productDetails[selectedProductId]) {
+            const selectedProduct = productDetails[selectedProductId];
+            const productImage = document.getElementById("productImage");
+            const productName = document.getElementById("productName");
+            const productPrice = document.getElementById("productPrice");
+
+            // Populate product details on the page
+            productImage.src = selectedProduct.image;
+            productName.textContent = selectedProduct.name;
+            productPrice.textContent = selectedProduct.price;
+        } else {
+            // Alert user for incorrect product ID and redirect to index page
+            alert("Incorrect Product ID");
+            window.location.replace("index.html");
+        }
+
+        // Get form elements
+        const orderForm = document.getElementById("orderForm");
+        const orderDetails = document.querySelector(".order-details");
+
+        // Handle form submission
+        const placeOrderButton = document.getElementById("placeOrder");
+        placeOrderButton.addEventListener("click", function () {
+            // Get form field values
+            const name = orderForm.name.value;
+            const address = orderForm.address.value;
+            const email = orderForm.email.value;
+            const phone = orderForm.phone.value;
+
+            // Validate form fields
+            if (name.trim() === "" || address.trim() === "" || !isValidEmail(email) || phone.trim() === "") {
+                alert("Seems Like One of Your Input Is Incorrect.Please fill in all fields correctly.");
+                return;
+            }
+
+            // Hide the order form and show the order summary
+            orderForm.style.display = "none";
+            orderDetails.innerHTML = `
+                <h2>Order Summary</h2>
+                <p>Name: ${name}</p>
+                <p>Address: ${address}</p>
+                <p>Email: ${email}</p>
+                <p>Phone: ${phone}</p>
+                <p>Product: ${productName.textContent}</p>
+                <p>Price: ${productPrice.textContent}</p>
+                <p>Thank you for your order!</p>
+            `;
+        });
+        // Function to validate email
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+    </script>
+
+</body>
+
+</html>

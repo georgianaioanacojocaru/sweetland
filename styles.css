@@ -1,0 +1,262 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8e0e0;
+}
+
+header {
+    background-color: #f0b0b6;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f0b0b6;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+section h2{
+    text-align:center;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        padding: 5px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+/* Add these styles to your existing styles.css */
+
+
+footer {
+    background-color: #f0b0b6;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-text {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Add media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text,
+    .about-image {
+        flex: none;
+        width: 100%;
+    }
+}
+
+
+/* sliedshow part */
+.offerings {
+    text-align: center;
+}
+
+.slideshow {
+    display: flex;
+    overflow: hidden;
+}
+
+.slide {
+    flex: 0 0 100%;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50px;
+}
+/* /.slideshow part ended */
+
+/* buy-now part */
+
+.buy-now {
+    text-align: center;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: calc(30% - 40px);
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.price {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.buy-button {
+    background-color: #f19da6;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.buy-button:hover {
+    background-color: #f26d7b;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1295px) {
+    .product {
+        width: calc(25% - 40px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product {
+        width: calc(100% - 40px); /* Display 1 product per row on smaller screens */
+    }
+}
+
+
+/* ORDER NOW FORM PART */
+.order-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.product-details,
+.order-details {
+    margin-bottom: 20px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.product-details img {
+    max-width: 100%;
+    height: auto;
+}
+
+.order-details h2 {
+    margin-bottom: 25px;
+}
+
+.order-details label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.order-details input,
+.order-details textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.order-details button {
+    background-color: #f0b0b6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 35px;
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .order-form {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .product-details,
+    .order-details {
+        flex: 1;
+        margin: 0 10px;
+    }
+}
+
+/* /.ORDER NOW FORM PART ENDED */
